@@ -35,6 +35,28 @@ app.get('/', function(req, res){
         // res.send("Hello World");
 });
 
+// adding a route that will take in an id (variable id, use : to denote)
+// use the request object to pull the id out of the params
+// send it back to the screen
+
+// db simulation
+var products = [{ id: 1, name: "IPad" },
+                { id: 2, name: "TV" },
+                { id: 3, name: "Shoes" }];
+
+app.get("/products/:id", function(req, res){
+    var id = Number(req.params.id);
+    var product = products.filter(function(prod) {
+        return prod.id == id;
+    })[0];
+
+    if(product) {
+        res.send("<h1> " + product.name + "</h1>");
+    } else {
+        res.status(404).send("Page not found");
+    }
+});
+
 // start server and listen on a port
 app.listen(8025);
 console.log("App is running");
