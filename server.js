@@ -51,9 +51,9 @@ app.get("/products/:id", function(req, res){
     })[0];
 
     if(product) {
-        res.send("<h1> " + product.name + "</h1>");
+        res.status(200).render("product",product);
     } else {
-        res.status(404).send("Page not found");
+        res.status(404).render("404");
     }
 });
 

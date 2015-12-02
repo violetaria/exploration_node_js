@@ -1,0 +1,14 @@
+extends layout
+
+block title
+  title Showing Product #{name}
+
+block content
+  h2 #{name} - #{id}
+  div
+    a(href="addtocart/#{id}") Buy Now!
+
+  img(src="http://lorempixel.com/300/300")
+
+  div
+    button buy now!
